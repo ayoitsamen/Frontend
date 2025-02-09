@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../static/admin.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="brand">MetroFlow</h1>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/report.html">Report Incident</a></li>
+          <li><a href="/updates.html">Live Updates</a></li>
+          <li><a href="/admin_dashboard.html" class="active">Admin Dashboard</a></li>
+          <li><a href="/login.html">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Content -->
+  <main class="dashboard">
+    <div class="container">
+      <h2>Admin Dashboard</h2>
+      <p>Welcome, Admin. Below are the reported incidents categorized by priority.</p>
+      
+      <div class="reports-section">
+        <div class="high-priority">
+          <h3>🚨 High Priority</h3>
+          <div class="report">
+            <p><strong>User:</strong> user1@example.com</p>
+            <p><strong>Description:</strong> Major collision reported at XYZ area.</p>
+            <p><strong>Status:</strong> Pending Resolution</p>
+          </div>
+        </div>
+
+        <div class="ongoing">
+          <h3>🛠️ Ongoing Resolution</h3>
+          <div class="report">
+            <p><strong>User:</strong> user2@example.com</p>
+            <p><strong>Description:</strong> Minor issue on line 3.</p>
+            <p><strong>Status:</strong> Under Investigation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MetroFlow. All rights reserved.</p>
+  </footer>
+</body>
+</html>

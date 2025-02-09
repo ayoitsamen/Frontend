@@ -1,0 +1,35 @@
+/* Report Page */
+.report-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.report-container h2 {
+  color: #FFD700;
+}
+
+.report-form label {
+  font-weight: bold;
+}
+
+.report-form input,
+.report-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.report-form button {
+  background-color: #FFD700;
+  color: #2C3E50;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.report-form button:hover {
+  background-color: #FFC107;
+}

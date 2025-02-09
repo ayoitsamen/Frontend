@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login/Signup</title>
+  <link rel="stylesheet" href="../static/admin.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="brand">MetroFlow</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/report">Report Incident</a></li>
+          <li><a href="/updates">Live Updates</a></li>
+          <li><a href="/admin">Admin Dashboard</a></li>
+          <li><a href="/login" class="active">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="login-page">
+    <div class="login-container">
+      <h2>User Login/Signup</h2>
+      <form method="POST" action="/login">
+        <!-- Email Field -->
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <!-- Password Field -->
+        <div class="form-group">
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button type="submit" name="action" value="login" class="login-btn">Log In</button>
+          <button type="submit" name="action" value="signup" class="signup-btn">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MetroFlow. All rights reserved.</p>
+  </footer>
+</body>
+</html>

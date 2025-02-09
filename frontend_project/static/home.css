@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Dreamorphans&family=Codigra+Regular&family=Helvetica:wght@700&family=Zilla+Slab:wght@300&display=swap'); /* Updated font imports */
+
+body {
+    font-family: 'Zt Bros Oskon 90s', sans-serif; /* Updated default font for normal text */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, navy, beige);
+    color: beige;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: navy;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .logo h1 {
+    font-family: 'Helvetica', sans-serif; /* Heading font for brand name */
+    font-weight: bold;
+    color: beige;
+    font-size: 28px;
+    margin: 0;
+    padding: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.nav-links li a {
+    font-family: 'Helvetica', sans-serif; /* Heading font for navigation links */
+    font-weight: bold;
+    text-decoration: none;
+    color: beige;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #FFD700; /* Golden hover effect */
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, navy, beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: beige;
+}
+
+.hero-title {
+    font-family: 'Helvetica', sans-serif; /* Heading font for hero title */
+    font-weight: bold;
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-family: 'Zt Bros Oskon 90s', sans-serif; /* Normal writing font for subtitle */
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    background: beige;
+    color: navy;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(245, 245, 220, 0.4);
+}
+
+/* Slideshow Section */
+.slideshow-container {
+    max-width: 100%;
+    overflow: hidden;
+    background: linear-gradient(to bottom, navy, beige);
+    padding: 20px 0;
+    position: relative;
+    border: 5px solid #FFD700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.slideshow-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 15px;
+}
+
+.slideshow-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: grayscale(100%);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.slideshow-image img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+/* Map Section */
+#map-section {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(to bottom, beige, navy);
+    color: beige;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* About Us Section */
+#about-us {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, navy, beige);
+    color: beige;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.about-title {
+    font-family: 'Helvetica', sans-serif; /* Heading font for about us title */
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-description {
+    font-family: 'Zt Bros Oskon 90s', sans-serif; /* Normal writing font for about us text */
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: navy;
+    color: beige;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

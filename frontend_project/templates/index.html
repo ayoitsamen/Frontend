@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroFlow</title>
+    <!-- Updated Font Imports -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Dreamorphans&family=Codigra+Regular&family=Helvetica:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/zt-bros-oskon-90s" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MetroFlow</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/report">Report Incident</a></li>
+                <li><a href="/updates">Live Updates</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/admin">Admin Dashboard</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to MetroFlow</h1>
+            <p class="hero-subtitle">Your gateway to smarter and seamless public transport solutions.</p>
+            <a href="#slideshow" class="cta-button">Explore More</a>
+        </div>
+    </div>
+
+    <!-- Slideshow Section -->
+    <section class="slideshow">
+        <div class="slideshow-container">
+            <div class="slideshow-track">
+                <div class="slideshow-image"><img src="../static/images/1.avif" alt="Slide 1"></div>
+                <div class="slideshow-image"><img src="../static/images/2.avif" alt="Slide 2"></div>
+                <div class="slideshow-image"><img src="../static/images/3.avif" alt="Slide 3"></div>
+                <div class="slideshow-image"><img src="../static/images/4.avif" alt="Slide 4"></div>
+                <div class="slideshow-image"><img src="../static/images/5.avif" alt="Slide 5"></div>
+                <div class="slideshow-image"><img src="../static/images/6.avif" alt="Slide 6"></div>
+                <div class="slideshow-image"><img src="../static/images/7.avif" alt="Slide 7"></div>
+                <div class="slideshow-image"><img src="../static/images/8.avif" alt="Slide 8"></div>
+                <div class="slideshow-image"><img src="../static/images/9.avif" alt="Slide 9"></div>
+                <div class="slideshow-image"><img src="../static/images/10.avif" alt="Slide 10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us">
+        <h2 class="about-title">About Us</h2>
+        <p class="about-description">
+            At MetroFlow, we believe in transforming public transport into a seamless experience, where every journey feels effortless and connected. 
+            Our innovative platform empowers users by valuing their input, addressing incidents in real-time, and ensuring every voice is heard. 
+            Together, we’re building smarter, safer, and more efficient transport solutions for everyone.
+        </p>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section">
+        <h2>London Metro Map</h2>
+        <p>Explore real-time locations of London metro stations, report incidents, and check updates.</p>
+        <div id="map"></div>
+        <div id="map-legend">
+            <h4>Legend</h4>
+            <p><span class="legend-icon" style="background-color: red;"></span> Critical Incidents</p>
+            <p><span class="legend-icon" style="background-color: orange;"></span> Moderate Incidents</p>
+            <p><span class="legend-icon" style="background-color: green;"></span> Open Stations</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 MetroFlow. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Slideshow -->
+    <script>
+        const slideshowTrack = document.querySelector('.slideshow-track');
+        let scrollAmount = 0;
+        function autoScroll() {
+            scrollAmount += 1;
+            if (scrollAmount >= slideshowTrack.scrollWidth - slideshowTrack.clientWidth) {
+                scrollAmount = 0; // Reset the scroll position
+            }
+            slideshowTrack.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+        setInterval(autoScroll, 30); // Adjust speed
+    </script>
+
+    <!-- JavaScript for Map -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const map = L.map('map').setView([51.5074, -0.1278], 12);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+        });
+    </script>
+</body>
+</html>

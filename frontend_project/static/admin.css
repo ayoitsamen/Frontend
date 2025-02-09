@@ -1,0 +1,127 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #2a2a72, #009ffd);
+  color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1a1a40;
+  padding: 10px 20px;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar nav ul li a.active {
+  color: #f2a900;
+  font-weight: bold;
+}
+
+/* Login Page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: #202040;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #f2a900;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #f2a900;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #202040;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #ffd700;
+}
+
+/* Dashboard Page */
+.dashboard .container {
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.dashboard h2 {
+  color: #f2a900;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.reports-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.high-priority,
+.ongoing {
+  background-color: #202040;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.report {
+  background-color: #2a2a72;
+  padding: 10px;
+  border-radius: 5px;
+}

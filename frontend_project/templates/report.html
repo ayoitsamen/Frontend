@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    </head>    
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>TransportAI</h1>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/report">Report Incident</a></li>
+                <li><a href="/updates">Live Updates</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="form-section">
+        <h2>Report an Incident</h2>
+        <form action="/submit" method="POST">
+            <label for="incident">Describe the incident:</label><br>
+            <textarea id="incident" name="incident" rows="5" cols="50" required></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        {% if success %}
+            <p style="color: green;">{{ success }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>© 2025 TransportAI. All Rights Reserved.</p>
+        <a href="#" class="back-to-top">Back to Top</a>
+    </footer>
+</body>
+</html>

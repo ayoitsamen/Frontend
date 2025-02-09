@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - MetroFlow</title>
+  <!-- Link to CSS files -->
+  <link rel="stylesheet" href="../static/contact.css">
+  <link rel="stylesheet" href="../static/common.css"> <!-- Shared styles -->
+</head>
+<body>
+ <!-- Navbar -->
+ <header>
+    <nav>
+        <div class="logo">
+            <h1>MetroFlow</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/report">Report Incident</a></li>
+            <li><a href="/updates">Live Updates</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/admin">Admin Dashboard</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <h2 class="contact-title">Contact Us</h2>
+      <p class="contact-subtitle">Your words are important to us. We’ll get back to you soon!</p>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MetroFlow. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Your words are important to us! We’ll be in touch soon.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
