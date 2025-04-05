@@ -1,41 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    </head>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Incident</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='common.css') }}">
+    <script>
+        const FASTAPI_URL = "https://688f-35-186-179-97.ngrok-free.app";  
+
+        // Function to get the user's location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById("location").value = 
+                        "Lat: " + position.coords.latitude + ", Long: " + position.coords.longitude;
+                }, function() {
+                    alert("Location access denied.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Toggle Gradio iframe
+        function toggleGradio() {
+            const iframe = document.getElementById("gradio-iframe");
+            iframe.style.display = (iframe.style.display === "none") ? "block" : "none";
+        }
+
+        // Submit form
+        async function submitForm(event) {
+            event.preventDefault();
+            let formData = new FormData(document.getElementById("incidentForm"));
+
+            try {
+                let response = await fetch("/submit_incident", {
+                    method: "POST",
+                    body: formData
+                });
+
+                let result = await response.json();
+                if (result.message) {
+                    alert(result.message);
+                    window.location.href = "/home";
+                } else {
+                    alert("Error: " + result.error);
+                }
+            } catch (error) {
+                alert("Error submitting the report.");
+                console.error(error);
+            }
+        }
+
+        // Load and show uploaded image
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const imageUrl = urlParams.get('image');
+
+            if (imageUrl) {
+                const img = document.getElementById("uploadedImage");
+                img.src = imageUrl;
+                img.style.display = "block";
+            }
+        };
+    </script>
+</head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <h1>TransportAI</h1>
-            </div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/report">Report Incident</a></li>
-                <li><a href="/updates">Live Updates</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+            <div class="logo"><h1>MetroFlow</h1></div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('updates') }}">Live Updates</a></li>
+                <li><a href="{{ url_for('report') }}">Report Incident</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('user_dashboard') }}">User Dashboard</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout-btn">Logout</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="form-section">
+    <section class="report-container">
         <h2>Report an Incident</h2>
-        <form action="/submit" method="POST">
-            <label for="incident">Describe the incident:</label><br>
-            <textarea id="incident" name="incident" rows="5" cols="50" required></textarea><br><br>
-            <button type="submit">Submit</button>
+        <p>We are here to help. Please fill in the details below.</p>
+
+        <form id="incidentForm" enctype="multipart/form-data">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="incident">Describe the Incident:</label>
+            <textarea id="incident" name="incident" rows="5" required></textarea><br><br>
+
+            <button type="button" onclick="getLocation()">Share Location</button><br>
+            <input type="text" id="location" name="location" placeholder="Location will appear here..." readonly><br><br>
+
+            <label for="image">Uploaded Image:</label><br>
+            <img id="uploadedImage" src="" alt="Uploaded Incident Image" style="display:none; max-width:300px;"><br>
+
+            <button type="button" onclick="toggleGradio()">Upload New Image</button><br><br>
+            <button type="submit" onclick="submitForm(event)">Submit Report</button>
         </form>
-        {% if success %}
-            <p style="color: green;">{{ success }}</p>
-        {% endif %}
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
+
+        <p id="responseMessage" style="color:green; display:none;">Incident submitted successfully!</p>
+
+        <!-- Gradio iframe -->
+        <iframe 
+            id="gradio-iframe" 
+            src="https://ayoitsame1-work.hf.space" 
+            style="width: 100%; height: 500px; border: none; display: none;" 
+            allow="camera; microphone">
+        </iframe>
     </section>
 
     <footer>
-        <p>© 2025 TransportAI. All Rights Reserved.</p>
+        <p>© 2025 MetroFlow. All Rights Reserved.</p>
         <a href="#" class="back-to-top">Back to Top</a>
     </footer>
 </body>

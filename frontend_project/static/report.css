@@ -1,35 +1,188 @@
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: navy;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .logo h1 {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  color: beige;
+  font-size: 28px;
+  margin: 0;
+  padding: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.nav-links li a {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: beige;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #FFD700;
+}
+
 /* Report Page */
 .report-container {
   max-width: 800px;
-  margin: auto;
-  padding: 20px;
+  margin: 40px auto;
+  padding: 30px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .report-container h2 {
   color: #FFD700;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-.report-form label {
+.report-container p {
+  color: beige;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.report-container label {
   font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+  color: beige;
 }
 
-.report-form input,
-.report-form textarea {
+.report-container input,
+.report-container textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  transition: all 0.3s ease;
 }
 
-.report-form button {
+.report-container input:focus,
+.report-container textarea:focus {
+  border-color: #FFD700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.report-container textarea {
+  height: 120px;
+  resize: none;
+}
+
+.report-container button {
+  width: 100%;
   background-color: #FFD700;
   color: #2C3E50;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-.report-form button:hover {
+.report-container button:hover {
   background-color: #FFC107;
+}
+
+/* Location Button */
+#location {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+/* File Upload */
+#image {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  width: 100%;
+  border: 1px solid #ddd;
+  color: black;
+}
+
+/* Response Message */
+#responseMessage {
+  color: green;
+  display: none;
+  margin-top: 20px;
+  font-weight: bold;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: navy;
+  color: beige;
+  margin-top: 40px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer a {
+  color: #FFD700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #FFC107;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .report-container {
+      width: 90%;
+      padding: 20px;
+  }
+
+  .report-container h2 {
+      font-size: 2rem;
+  }
+
+  .report-container p {
+      font-size: 1rem;
+  }
+
+  .report-container button {
+      font-size: 16px;
+      padding: 12px;
+  }
 }

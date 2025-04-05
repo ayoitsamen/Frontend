@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* Now loaded via Google Fonts */
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom right, #1E3C72, #2A5298);
@@ -63,6 +63,7 @@ footer {
   color: #ffffff;
   font-size: 16px;
 }
+
 #map-section {
   padding: 50px;
   text-align: center;

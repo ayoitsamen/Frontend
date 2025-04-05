@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="../static/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <h1 class="brand">MetroFlow</h1>
-      <nav>
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/report.html">Report Incident</a></li>
-          <li><a href="/updates.html">Live Updates</a></li>
-          <li><a href="/admin_dashboard.html" class="active">Admin Dashboard</a></li>
-          <li><a href="/login.html">Login</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MetroFlow</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('updates') }}">Live Updates</a></li>
+                <li><a href="{{ url_for('report') }}">Report Incident</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('user_dashboard') }}">User Dashboard</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Dashboard Content -->
-  <main class="dashboard">
-    <div class="container">
-      <h2>Admin Dashboard</h2>
-      <p>Welcome, Admin. Below are the reported incidents categorized by priority.</p>
-      
-      <div class="reports-section">
-        <div class="high-priority">
-          <h3>🚨 High Priority</h3>
-          <div class="report">
-            <p><strong>User:</strong> user1@example.com</p>
-            <p><strong>Description:</strong> Major collision reported at XYZ area.</p>
-            <p><strong>Status:</strong> Pending Resolution</p>
-          </div>
+    <!-- Admin Dashboard Content -->
+    <main class="dashboard">
+        <div class="container">
+            <h2>Reported Incidents</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>AI Prediction</th>
+                        <th>Confidence</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Update Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for incident in incidents %}
+                    <tr>
+                        <td>{{ incident.user }}</td>
+                        <td>{{ incident.description }}</td>
+                        <td>{{ incident.location }}</td>
+                        <td>{{ incident.ai_result }}</td>
+                        <td>{{ incident.confidence }}</td>
+                        <td>
+                            {% if incident.image_url %}
+                            <img src="{{ incident.image_url }}" alt="Incident Image" style="max-width: 100px;">
+                            {% else %}
+                            No Image
+                            {% endif %}
+                        </td>
+                        <td>{{ incident.status }}</td>
+                        <td>
+                            <form method="POST" action="/update_status">
+                                <input type="hidden" name="incident_id" value="{{ incident.id }}">
+                                <select name="status">
+                                    <option value="Pending" {% if incident.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="Solved" {% if incident.status == 'Solved' %}selected{% endif %}>Solved</option>
+                                </select>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <button onclick="contactAuthorities('{{ incident.id }}')">Contact Authorities</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+    </main>
 
-        <div class="ongoing">
-          <h3>🛠️ Ongoing Resolution</h3>
-          <div class="report">
-            <p><strong>User:</strong> user2@example.com</p>
-            <p><strong>Description:</strong> Minor issue on line 3.</p>
-            <p><strong>Status:</strong> Under Investigation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 MetroFlow. All Rights Reserved.</p>
+        <a href="#" class="back-to-top">Back to Top</a>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 MetroFlow. All rights reserved.</p>
-  </footer>
+    <!-- JavaScript for Actions -->
+    <script>
+        function contactAuthorities(incidentId) {
+            alert(`Contacting authorities for incident ID: ${incidentId}`);
+            // Add logic to contact authorities (e.g., send an API request)
+        }
+    </script>
 </body>
 </html>

@@ -1,127 +1,130 @@
-/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #2a2a72, #009ffd);
-  color: #fff;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, navy, beige);
+    color: beige;
+    overflow-x: hidden;
 }
 
 /* Navbar */
-.navbar {
-  background-color: #1a1a40;
-  padding: 10px 20px;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: navy;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header .logo h1 {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+    color: beige;
+    font-size: 28px;
+    margin: 0;
+    padding: 10px;
 }
 
-.navbar .brand {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
 }
 
-.navbar nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
+.nav-links li a {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: beige;
+    font-size: 1rem;
+    transition: color 0.3s ease;
 }
 
-.navbar nav ul li a {
-  color: #fff;
-  text-decoration: none;
+.nav-links li a:hover {
+    color: #FFD700;
 }
 
-.navbar nav ul li a.active {
-  color: #f2a900;
-  font-weight: bold;
-}
-
-/* Login Page */
-.login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  padding: 20px;
-}
-
-.login-container {
-  background-color: #202040;
-  padding: 30px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.login-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #f2a900;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-}
-
-.login-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: #f2a900;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #202040;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-btn:hover {
-  background-color: #ffd700;
-}
-
-/* Dashboard Page */
+/* Dashboard */
 .dashboard .container {
-  margin: 20px auto;
-  max-width: 900px;
-  padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .dashboard h2 {
-  color: #f2a900;
-  font-size: 28px;
-  margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 20px;
 }
 
-.reports-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.high-priority,
-.ongoing {
-  background-color: #202040;
-  padding: 20px;
-  border-radius: 10px;
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.report {
-  background-color: #2a2a72;
-  padding: 10px;
-  border-radius: 5px;
+th {
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+select, button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+select {
+    background: rgba(255, 255, 255, 0.1);
+    color: beige;
+}
+
+button {
+    background: #FFD700;
+    color: navy;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ffcc00;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background: navy;
+    color: beige;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }

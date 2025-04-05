@@ -1,34 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/updates.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-    </head>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Transport Updates | MetroFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='updates.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</head>
 <body>
+
     <header>
         <nav>
             <div class="logo">
-                <h1>TransportAI</h1>
+                <h1>MetroFlow</h1>
             </div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/report">Report Incident</a></li>
-                <li><a href="/updates">Live Updates</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('updates') }}">Live Updates</a></li>
+                <li><a href="{{ url_for('report') }}">Report Incident</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                <li><a href="{{ url_for('user_dashboard') }}">User Dashboard</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}" class="logout-btn">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Live Updates</h2>
-        <p>Check here for the latest updates on reported incidents and transport services.</p>
-        <ul>
-            <li>Incident 1: Train delay at Station A - Resolved</li>
-            <li>Incident 2: Roadblock on Highway B - In Progress</li>
-            <li>Incident 3: Maintenance issue on Bus Route C - Scheduled</li>
-        </ul>
-    </main>
+
+    <!-- HERO SECTION -->
+<section class="hero">
+    <h1 class="hero-title"> Never Miss a Beat. Travel Like a Pro! </h1>
+    <p class="hero-subtitle">Live updates, instant alerts, and smart insights—stay ahead of disruptions, avoid delays, and move with confidence! </p>
+</section>
+
+
+    <!-- NEWS SECTION -->
+    <section class="news-section">
+        <h2>📰 Latest Transport News</h2>
+        <div class="news-container" id="news-feed">
+            <p>Loading news...</p>
+        </div>
+    </section>
+
+    <!-- TfL UPDATES SECTION -->
+    <section class="tfl-updates">
+        <h2>🚇 Live TfL Updates</h2>
+        <div id="tfl-news">
+            <p>Loading TfL updates...</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2025 TransportAI. All Rights Reserved.</p>
+        <p>© 2025 MetroFlow. All Rights Reserved.</p>
     </footer>
+
+    <!-- JAVASCRIPT FOR FETCHING DATA -->
+    <script>
+        // Fetch TfL Updates
+        async function fetchTfLUpdates() {
+            try {
+                const response = await fetch("/get_tfl_updates");
+                const data = await response.json();
+
+                document.getElementById("tfl-news").innerHTML = data.map(line => `
+                    <div class="update-item">
+                        <h3>${line.name}</h3>
+                        <p><strong>Status:</strong> ${line.lineStatuses[0].statusSeverityDescription}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                document.getElementById("tfl-news").innerHTML = "<p>⚠️ Unable to load TfL updates.</p>";
+            }
+        }
+
+        // Fetch News Articles using NewsAPI.org
+        async function fetchTransportNews() {
+            const apiKey = '3eb73a829a6a4feaa4bf7289e81cc37c';
+            const url = `https://newsapi.org/v2/everything?q=transport&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (!data.articles || data.articles.length === 0) {
+                    throw new Error('No articles found.');
+                }
+
+                document.getElementById("news-feed").innerHTML = data.articles.slice(0, 6).map(article => `
+                    <div class="news-item">
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/300x180'}" alt="${article.title}" class="news-img">
+                        <div class="news-content">
+                            <h3>${article.title}</h3>
+                            <p>${article.description || 'No description available.'}</p>
+                            <a href="${article.url}" target="_blank" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                document.getElementById("news-feed").innerHTML = "<p>⚠️ Unable to load news articles.</p>";
+            }
+        }
+
+        // Initialize data fetching
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchTfLUpdates();
+            fetchTransportNews();
+        });
+    </script>
+
 </body>
 </html>

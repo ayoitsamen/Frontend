@@ -1,0 +1,77 @@
+/* Animations */
+@keyframes fadeInFloating {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes loadingDots {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Modern Font */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("/static/images/background.gif") no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Removes black box, text floats into the background */
+.landing-container {
+  background: none;
+  padding: 20px;
+  animation: fadeInFloating 2s ease-out forwards;
+  text-align: center;
+}
+
+/* MetroFlow Title: Sleek, Floating Animation */
+.fade-in-floating {
+  font-size: 5rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeInFloating 1.8s ease-out forwards;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #1E90FF, #A9A9A9); /* Deep Blue to Light Gray */
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Safari Fix */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+  letter-spacing: 3px;
+}
+
+/* Loading Text: iOS-Style Dots Animation */
+.loading-text {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85); /* Soft White */
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.dot {
+  animation: loadingDots 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.3s; }
+.dot:nth-child(3) { animation-delay: 0.6s; }

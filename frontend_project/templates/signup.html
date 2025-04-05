@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - MetroFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+<body>
+
+    <!-- Signup Box -->
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>Sign Up</h2>
+            <p class="subtitle">Create your account</p>
+            <form id="signupForm">
+                <div class="input-group">
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            <p class="login-text">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Popup Notification -->
+    <div id="popup" class="popup">
+        <p>✅ We have sent an email. Please confirm your email using the link provided.</p>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from submitting immediately
+
+            let popup = document.getElementById("popup");
+            popup.style.display = "block"; // Show popup
+
+            setTimeout(() => {
+                window.location.href = "{{ url_for('login') }}"; // Redirect to login after 3 seconds
+            }, 3000);
+
+            // Send form data to Flask backend
+            fetch("{{ url_for('signup') }}", {
+                method: "POST",
+                body: new FormData(this)
+            }).then(response => response.json())
+              .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+</html>

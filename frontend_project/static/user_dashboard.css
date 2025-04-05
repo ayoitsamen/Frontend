@@ -1,0 +1,223 @@
+/* General Styling */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 28px;
+  margin: 0;
+  padding: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.nav-links li a {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffd700;
+}
+
+/* User Profile */
+.user-profile {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+}
+
+.user-profile .role {
+  margin: 10px 0;
+  color: #ccc;
+}
+
+/* Dashboard Content */
+.dashboard-container {
+  padding: 20px;
+}
+
+.statistics {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: white;
+}
+
+.stat-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stat-card ul li a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.stat-card ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Weather Widget */
+.weather-widget {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.weather-widget h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.weather-widget p {
+  margin: 10px 0;
+  color: white;
+}
+
+.weather-forecast {
+  margin-top: 10px;
+}
+
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  color: white;
+}
+
+/* Quick Actions */
+.quick-actions {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.quick-actions h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.quick-actions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-actions ul li {
+  padding: 10px 0;
+}
+
+.quick-actions ul li a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.quick-actions ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Recent Activity */
+.recent-activity {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.recent-activity h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.recent-activity ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recent-activity ul li {
+  padding: 10px 0;
+  color: white;
+}
